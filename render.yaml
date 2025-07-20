@@ -1,31 +1,20 @@
 
 services:
   - type: web
-    name: frontend
-    env: static
-    staticPublishPath: ./frontend/dist
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
-
-  - type: web
+    runtime: node
     name: backend
-    env: node
     plan: free
     rootDir: ./backend
     buildCommand: npm install
     startCommand: node server.js
-    repo: https://github.com/BeOct1/betmora-movie-app.git  # Change this to your repo URL
+    repo: https://github.com/BeOct1/betmora-movie-app.git  
     branch: main 
     healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
         value: 18
       - key: DATABASE_URL
-        fromDatabase:
-          name: betmora-movie-app
-          property: connectionString
+        value: mongodb+srv://bitrusmail:7gXJHQGiPR9mfBab@cluster0.1sgoxgf.mongodb.net/bitrusmail?retryWrites=true&w=majority
       - key: JWT_SECRET
         generateValue: true
       - key: GOOGLE_CLIENT_ID
