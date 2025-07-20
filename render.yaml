@@ -4,9 +4,9 @@ services:
     name: frontend
     env: static
     staticPublishPath: ./frontend/dist
-    routes:
-      - path: /*
-        dest: /index.html
+    rewrites:
+      - source: /*
+        destination: /index.html
 
   - type: web
     name: backend
