@@ -13,6 +13,9 @@ services:
     name: backend
     env: node
     plan: free
+    rootDir: ./backend
+    buildCommand: npm install
+    startCommand: node server.js
     repo: https://github.com/BeOct1/betmora-movie-app.git # Change this to your repo URL
     branch: main # Change this to your branch name
     healthCheckPath: /api/health
