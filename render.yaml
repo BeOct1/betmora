@@ -12,7 +12,7 @@ services:
     name: backend
     env: node
     plan: free
-    repo: https://github.com/Bit-Ed/BeMora-Movie-App.git # Change this to your repo URL
+    repo: https://github.com/BeOct1/betmora-movie-app.git # Change this to your repo URL
     branch: main # Change this to your branch name
     healthCheckPath: /api/health
     envVars:
