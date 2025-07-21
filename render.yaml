@@ -13,7 +13,7 @@ services:
     envVars:
       - key: NODE_VERSION
         value: 18
-      - key: DATABASE_URL
+      - key: MONGO_URI
         value: mongodb+srv://bitrusmail:7gXJHQGiPR9mfBab@cluster0.1sgoxgf.mongodb.net/bitrusmail?retryWrites=true&w=majority
       - key: JWT_SECRET
         generateValue: true
