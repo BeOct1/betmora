@@ -1,0 +1,25 @@
+>>>>>>> REPLACE
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    place-items: stretch;
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  a {
+    font-size: 1em;
+  }
+
+  button {
+    width: 100%;
+    font-size: 1.1em;
+    padding: 0.8em 1.5em;
+  }
+}
