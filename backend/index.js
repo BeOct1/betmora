@@ -39,7 +39,7 @@ app.use('/api/users', userRoutes)
 app.use('/api/follow', followRoutes)
 app.use('/api/recommendations', recommendationRoutes)
 
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 5001
 
 // Connect to DB and start server
 connectDB()

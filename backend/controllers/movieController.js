@@ -12,7 +12,7 @@ import {
 // @desc    Fetch popular movies (using TMDB utility)
 export const getPopularMovies = asyncHandler(async (req, res) => {
     try {
-        const movies = await fetchPopularMoviesFromTMDB(process.env.TMDB_API_KEY)
+        const movies = await fetchPopularMoviesFromTMDB()
         res.json(movies)
     } catch (err) {
         console.error('Failed to fetch popular movies:', err.message, err.stack);
@@ -24,7 +24,7 @@ export const getPopularMovies = asyncHandler(async (req, res) => {
 export const getMovieDetails = asyncHandler(async (req, res) => {
     const { id } = req.params;
     try {
-        const response = await fetchMovieDetailsFromTMDB(id, process.env.TMDB_API_KEY);
+        const response = await fetchMovieDetailsFromTMDB(id);
         res.json(response);
     } catch (err) {
         console.error('Failed to fetch movie details:', err.message, err.stack);
@@ -36,7 +36,7 @@ export const getMovieDetails = asyncHandler(async (req, res) => {
 export const getMovieTrailer = asyncHandler(async (req, res) => {
     const { id } = req.params;
     try {
-        const trailerUrl = await fetchMovieTrailerFromTMDB(id, process.env.TMDB_API_KEY);
+        const trailerUrl = await fetchMovieTrailerFromTMDB(id);
         if (!trailerUrl) {
             return res.status(404).json({ message: 'Trailer not found' });
         }
@@ -51,7 +51,7 @@ export const getMovieTrailer = asyncHandler(async (req, res) => {
 export const getRecommendations = asyncHandler(async (req, res) => {
     const { id } = req.params;
     try {
-        const recommendations = await fetchRecommendationsFromTMDB(id, process.env.TMDB_API_KEY);
+        const recommendations = await fetchRecommendationsFromTMDB(id);
         res.json(recommendations);
     } catch (err) {
         console.error('Failed to fetch movie recommendations:', err.message, err.stack);
@@ -63,7 +63,7 @@ export const getRecommendations = asyncHandler(async (req, res) => {
 export const getMoviesByGenre = asyncHandler(async (req, res) => {
     // Example: you can extend this to accept genre ID or name from req.query or req.params
     try {
-        const moviesByGenre = await fetchMoviesByGenreFromTMDB(req.query.genreId, process.env.TMDB_API_KEY);
+        const moviesByGenre = await fetchMoviesByGenreFromTMDB(req.query.genreId);
         res.json(moviesByGenre);
     } catch (err) {
         console.error('Failed to fetch movies by genre:', err.message, err.stack);
@@ -78,7 +78,7 @@ export const searchMovies = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'Query parameter is required' });
     }
     try {
-        const results = await searchMoviesFromTMDB(query, process.env.TMDB_API_KEY);
+        const results = await searchMoviesFromTMDB(query);
         res.json(results);
     } catch (err) {
         console.error('Failed to search movies:', err.message, err.stack);

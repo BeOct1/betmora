@@ -3,7 +3,8 @@ import dotenv from 'dotenv'
 import { connectDB } from './config/db.js'
 import cookieParser from 'cookie-parser'
 import authRoutes from './routes/authRoutes.js'
-import movieRoutes from './routes/movieRoutes.js'
+import cors from 'cors';
+import movieRoutes from './routes/movieRoutes.js';
 import watchlistRoutes from './routes/watchlistRoutes.js'
 import favoriteRoutes from './routes/favoriteRoutes.js'
 
@@ -13,7 +14,18 @@ connectDB()
 
 const app = express()
 
-app.use(express.json())
+const allowedOrigins = ['http://localhost:3000', 'https://betmora.onrender.com'];
+
+app.use(cors({ 
+  origin: (origin, callback) => {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 

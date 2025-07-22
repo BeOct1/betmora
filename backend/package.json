@@ -1,7 +1,7 @@
 {
-  "name": "betmora-movie-app-backend",
+  "name": "betmora-backend",
   "version": "1.0.0",
-  "description": "BeMora|Movie App backend server.",
+  "description": "Betmora backend server.",
   "main": "server.js",
   "type": "module",
   "scripts": {
