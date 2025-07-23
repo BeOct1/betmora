@@ -13,6 +13,6 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'dist'  // ✅ this is required for vercel.json to work properly
+    outDir: 'dist' 
   }
 });
