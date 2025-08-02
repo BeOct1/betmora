@@ -1,12 +1,20 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  WhatsappIcon
+} from 'react-share';
 import { getMovieDetails, getMovieRecommendations } from '../api/movies';
 import AuthContext from '../context/AuthContext';
 import axios from 'axios';
 
 function MovieDetailsPage() {
   const { id } = useParams();
-  const { token } = useContext(AuthContext);
+  const { user, token } = useContext(AuthContext);
   const [movie, setMovie] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
   const [trailerUrl, setTrailerUrl] = useState(null);
@@ -58,7 +66,7 @@ function MovieDetailsPage() {
     fetchRecommendations();
     fetchMovieTrailer();
     fetchReviews();
-  }, [id, token]);
+  }, [id, token, user]);
 
   const handleAddToWatchlist = async () => {
     try {
@@ -169,6 +177,17 @@ function MovieDetailsPage() {
           <button onClick={handleAddToWatchlist} className="btn btn-primary me-2">Add to Watchlist</button>
           <button onClick={handleAddToFavorites} className="btn btn-danger me-2">Add to Favorites</button>
           <Link to={`/reviews/${id}`} className="btn btn-secondary">Reviews</Link>
+          <div className="mt-3">
+            <FacebookShareButton url={window.location.href} quote={`Check out ${movie.title}!`}>
+              <FacebookIcon size={32} round />
+            </FacebookShareButton>
+            <TwitterShareButton url={window.location.href} title={`Check out ${movie.title}!`}>
+              <TwitterIcon size={32} round />
+            </TwitterShareButton>
+            <WhatsappShareButton url={window.location.href} title={`Check out ${movie.title}!`}>
+              <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+          </div>
         </div>
       </div>
 
