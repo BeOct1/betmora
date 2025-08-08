@@ -17,7 +17,8 @@ const app = express()
 const allowedOrigins = [
   'http://localhost:3000', 
   'http://localhost:4173', 
-  'https://betmora.onrender.com'
+  'https://betmora.onrender.com',
+  'https://betmora-movie-app.vercel.app'
 ];
 
 app.use(cors({ 
