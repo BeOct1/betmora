@@ -11,6 +11,11 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+    hmr: {
+      host: 'localhost',
+      protocol: 'ws',
+      port: 3000,
+    },
   },
   build: {
     outDir: 'dist' 
